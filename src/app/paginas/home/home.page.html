@@ -1,14 +1,35 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Aplicación prueba tienda
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+
+<ion-grid>
+  <ion-row *ngFor="let pares of productos">
+  <ion-col *ngFor="let item of pares" (click)="pinchar(item)">
+    <img src={{rutaImagen(item.codigo)}}>
+    <p>
+      {{item.producto}}
+      <br>
+      {{item.precio_compra}}
+
+    </p>
+  </ion-col>
+</ion-row>
+</ion-grid>
+  
+
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="siguiente_pagina($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  
 </ion-content>
