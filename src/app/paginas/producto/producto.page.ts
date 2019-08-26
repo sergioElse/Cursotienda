@@ -12,10 +12,8 @@ export class ProductoPage implements OnInit {
   producto:any;
   
   constructor(private route: ActivatedRoute) {
-    console.log('en el producto');
     this.route.queryParams.subscribe((respuesta)=>{
       this.producto = JSON.parse(respuesta.producto)
-      console.log(this.producto);
     })
 
   

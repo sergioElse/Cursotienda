@@ -6,4 +6,21 @@
 
 <ion-content>
   <img src={{rutaImagen(producto.codigo)}}>
+  <div padding>
+    <h5>{{producto.producto}}</h5>
+    <p>
+      <strong>Precio:</strong> {{producto.precio_compra | currency:"EUR"}}
+    </p>
+    <p>
+      {{producto.descripcion}}
+      <br>
+      <strong>{{producto.proveedor}}</strong>
+    </p>
+    
+    <ion-button expand="block" icon-left>
+      <ion-icon name="cart"></ion-icon>
+      Agregar al carrito
+    </ion-button>
+  </div>
 </ion-content>
+

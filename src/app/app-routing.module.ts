@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'tabs', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./paginas/home/home.module').then( m => m.HomePageModule)},
   { path: 'carrito', loadChildren: './paginas/carrito/carrito.module#CarritoPageModule' },
   { path: 'categorias', loadChildren: './paginas/categorias/categorias.module#CategoriasPageModule' },
