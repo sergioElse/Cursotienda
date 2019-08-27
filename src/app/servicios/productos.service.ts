@@ -11,7 +11,8 @@ export class ProductosService {
 
   pagina:number = 0;
   productos:any[] = []; //queda del tipo productos[[item1, item2],[item3, item4]......]
-  lineas:any[];
+  lineas:any[] = [];
+  por_categoria:any[] = []; //Arreglo para objetos filtrados por categoría
 
   constructor(private http: HttpClient) { 
       this.cargar_todos();
@@ -31,6 +32,18 @@ export class ProductosService {
           
         }
       })
+  }
+
+  cargar_por_categoria(categoria:number){
+    let url = URL_SERVICIOS + "productos/por_tipo/" + categoria;
+    this.http.get(url)
+      .subscribe( (data:any) => {
+        if(data.error){
+          //Hay 
+       }else{
+        console.log(data.productos);
+        this.por_categoria = data.productos;
+      }});
   }
   
   cargar_todos(){

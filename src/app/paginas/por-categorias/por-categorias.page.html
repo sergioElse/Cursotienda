@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>porCategorias</ion-title>
+    <ion-title>{{categoria.linea}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of _ps.cargar_por_categoria">
+      <ion-thumbnail item-left>
+        <img src={{rutaImagen(item.codigo)}}>
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
 </ion-content>

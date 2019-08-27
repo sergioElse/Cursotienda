@@ -6,9 +6,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-button expand="full" *ngFor="let categoria of _ps.lineas">
+    <ion-item detail (click)="pinchar(categoria)" *ngFor="let categoria of _ps.lineas">
       <ion-icon [name]="categoria.icono" item-left></ion-icon>
-      {{categoria.linea}}</ion-button>
+      {{categoria.linea}}</ion-item>
 
   </ion-list>
 </ion-content>
