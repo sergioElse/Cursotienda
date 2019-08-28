@@ -41,7 +41,6 @@ export class ProductosService {
         if(data.error){
           //Hay 
        }else{
-        console.log(data.productos);
         this.por_categoria = data.productos;
       }});
   }

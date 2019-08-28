@@ -6,10 +6,16 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let item of _ps.cargar_por_categoria">
-      <ion-thumbnail item-left>
-        <img src={{rutaImagen(item.codigo)}}>
+    <ion-item *ngFor="let item of _ps.por_categoria"> <!--Usamos "por_categoria porque
+    es la variable que utilizamos dentro de _ps -->
+      <ion-thumbnail item-left >
+        <img src={{rutaImagen(item.codigo)}} >
       </ion-thumbnail>
+      <ion-label>
+        <h2> {{item.producto}}</h2>
+        <p> {{item.proveedor}}</p>
+      </ion-label>
+      <ion-button clear item-right (click)="pinchar(item)">Ver</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
