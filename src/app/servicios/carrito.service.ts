@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AlertController, Platform } from '@ionic/angular';
+import { AlertController, Platform, ModalController } from '@ionic/angular';
+
+//Plugin Storage
 import { Storage } from '@ionic/storage';
 
+//Servicios
+import { UsuarioService } from './usuario.service';
 
+//Paginas del Modal
+import { LoginPage } from '../paginas/login/login.page';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +17,23 @@ export class CarritoService {
 
   productos:any[] = [];
 
-  constructor(private alert: AlertController, private platform: Platform, private storage: Storage) {
+  constructor(  private alert: AlertController, 
+                private platform: Platform, 
+                private storage: Storage, 
+                private _us:UsuarioService,
+                private modal: ModalController) {
+
     this.cargar_storage();
+    loginPage: LoginPage;
    }
+
+  ver_carrito(){
+    if(this._us.token){
+
+    }else{  //Mostrar el login
+     // this.modal.create( );
+    }
+  } 
 
   agregar_carrito(producto:any){
     //Vamos a comprobar que el producto no exista en el carrito
