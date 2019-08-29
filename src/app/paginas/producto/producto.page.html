@@ -17,7 +17,7 @@
       <strong>{{producto.proveedor}}</strong>
     </p>
     
-    <ion-button expand="block" icon-left>
+    <ion-button expand="block" icon-left (click)="_cs.agregar_carrito(producto)">
       <ion-icon name="cart"></ion-icon>
       Agregar al carrito
     </ion-button>

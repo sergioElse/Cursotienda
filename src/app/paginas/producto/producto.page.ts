@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RutaImagenPipe } from '../../pipes/ruta-imagen.pipe';
+import { CarritoService } from '../../servicios/carrito.service';
 
 @Component({
   selector: 'app-producto',
@@ -11,7 +12,7 @@ export class ProductoPage implements OnInit {
 
   producto:any;
   
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private _cs:CarritoService) {
     this.route.queryParams.subscribe((respuesta)=>{
       this.producto = JSON.parse(respuesta.producto)
     })

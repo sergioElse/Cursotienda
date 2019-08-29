@@ -75,3 +75,20 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 }
+
+.carrito_vacio{
+  position: relative;
+  top: 30%;
+  font-size: 20px;
+}
+
+.icon-5x{
+  font-size: 100px;
+}
+
+.carrito-numero{
+  position: absolute;
+  top: 1px;
+  left: 14px;
+  font-size: 9px;
+}
