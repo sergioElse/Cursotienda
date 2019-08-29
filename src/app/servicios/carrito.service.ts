@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { present } from '@ionic/core/dist/types/utils/overlays';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,8 @@ export class CarritoService {
       }
     }
     this.productos.push(producto);//Vamos insertando al carrito
+    console.log(this.productos.length);
+    console.log(this.productos);
   }
 
   async presentAlert(producto){

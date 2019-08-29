@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductosService } from '../../servicios/productos.service';
 import { RutaImagenPipe } from '../../pipes/ruta-imagen.pipe';
 import { Router } from '@angular/router'
+import { CarritoService } from '../../servicios/carrito.service';
 
 
 @Component({
@@ -9,16 +10,14 @@ import { Router } from '@angular/router'
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  providers: [ //Tengo que añadir el servidio que importo arriba.
-    ProductosService,
-  ] 
 })
 export class HomePage {
 
   productos:any[] = [];
 
-  constructor(public _ps: ProductosService, private router: Router) {
+  constructor(public _ps: ProductosService, private router: Router, private _cs:CarritoService) {
     this.productos = this._ps.productos;
+    console.log(_cs.productos.length);
 
   }
 

@@ -9,11 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule} from '@ionic/storage'
 
 //Servicios
 import { ProductosService } from './servicios/productos.service'
 import { UsuarioService } from './servicios/usuario.service'
 import { CarritoService } from './servicios/carrito.service';
+
 
 //Pipes
 import { PipesModule } from './pipes/pipes.module';
@@ -27,7 +29,8 @@ import { PipesModule } from './pipes/pipes.module';
   entryComponents: [],
   imports: [
     BrowserModule, 
-    IonicModule.forRoot(), 
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(), 
     HttpClientModule,
     AppRoutingModule,
     PipesModule
