@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-button  routerLink='' routerDirection="root">Cerrar</ion-button>
+    <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item>
+      <ion-label>Correo</ion-label>
+      <ion-input type="email" [(ngModel)]="correo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="contrasena"></ion-input>
+    </ion-item>
+  </ion-list>
+ 
+  <ion-button expand="block">Ingresar</ion-button>  
 </ion-content>
