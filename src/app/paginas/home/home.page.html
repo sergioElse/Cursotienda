@@ -5,7 +5,7 @@
     </ion-title>
 
     <ion-buttons end>
-      <ion-button icon-only>
+      <ion-button icon-only (click)="_cs.ver_carrito()">
         <ion-icon name="cart"></ion-icon>
         <ion-badge class="carrito-numero" color="danger">{{_cs.productos.length}}</ion-badge>
       </ion-button>

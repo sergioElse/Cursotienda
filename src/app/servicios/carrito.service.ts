@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController, Platform, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 //Plugin Storage
 import { Storage } from '@ionic/storage';
@@ -8,7 +9,9 @@ import { Storage } from '@ionic/storage';
 import { UsuarioService } from './usuario.service';
 
 //Paginas del Modal
-import { LoginPage } from '../paginas/login/login.page';
+// import { LoginPage } from '../paginas/login/login.page';
+// import { CarritoPage } from '../paginas/carrito/carrito.page';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,23 +20,38 @@ export class CarritoService {
 
   productos:any[] = [];
 
-  constructor(  private alert: AlertController, 
+  constructor(  public alert: AlertController, 
                 private platform: Platform, 
                 private storage: Storage, 
                 private _us:UsuarioService,
-                private modal: ModalController) {
+                public modal: ModalController,
+                private router: Router) {
 
     this.cargar_storage();
-    loginPage: LoginPage;
+
    }
 
   ver_carrito(){
-    if(this._us.token){
 
+    let modal:any;
+
+    if(this._us.token){   //Estamos registrados
+      //this.modal = this.modal.create(CarritoPage); //Mostramos página del carrito      
+      this.router.navigate(['carrito']);
     }else{  //Mostrar el login
-     // this.modal.create( );
+      //this.modal = this.modal.create(LoginPage); //Mostramos Login
+      this.router.navigate(['login']);
     }
+
+    // modal.present();
+
+    // modal.onDidDismiss( (abrirCarrito:boolean)=>{ //Una vez hagamos login...
+    //   if(abrirCarrito){//Si se ha registrado correctamente mandamos a la página del carrito
+    //     this.modal.create(CarritoPage);
+    //   }
+    // })
   } 
+
 
   agregar_carrito(producto:any){
     //Vamos a comprobar que el producto no exista en el carrito

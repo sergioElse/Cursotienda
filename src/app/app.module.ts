@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule} from '@ionic/storage'
 
+
 //Servicios
 import { ProductosService } from './servicios/productos.service'
 import { UsuarioService } from './servicios/usuario.service'
@@ -21,10 +22,9 @@ import { CarritoService } from './servicios/carrito.service';
 import { PipesModule } from './pipes/pipes.module';
 
 
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, 
   ],
   entryComponents: [],
   imports: [
