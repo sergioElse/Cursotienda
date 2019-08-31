@@ -7,7 +7,8 @@ import { URL_IMAGENES } from '../../config/url.servicios';
 export class RutaImagenPipe implements PipeTransform {
 
   transform(codigo: string ): string { //El valor que recibimos
-    return URL_IMAGENES + codigo + ".jpg";
+    return URL_IMAGENES + codigo + '.jpg';
+
   }
 
 }

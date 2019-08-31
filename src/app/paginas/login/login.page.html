@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button  routerLink='' routerDirection="root">Cerrar</ion-button>
+    <ion-button size="small"  routerLink='' routerDirection="root">Cerrar</ion-button>
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -17,5 +17,7 @@
     </ion-item>
   </ion-list>
  
-  <ion-button expand="block">Ingresar</ion-button>  
+  <ion-button expand="block" 
+    [disabled]="correo.length < 5 || contrasena.length <5" 
+    (click)='login()'>Ingresar</ion-button>  
 </ion-content>

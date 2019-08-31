@@ -8,10 +8,6 @@ import { Storage } from '@ionic/storage';
 //Servicios
 import { UsuarioService } from './usuario.service';
 
-//Paginas del Modal
-// import { LoginPage } from '../paginas/login/login.page';
-// import { CarritoPage } from '../paginas/carrito/carrito.page';
-
 
 @Injectable({
   providedIn: 'root'
@@ -33,23 +29,13 @@ export class CarritoService {
 
   ver_carrito(){
 
-    let modal:any;
-
-    if(this._us.token){   //Estamos registrados
-      //this.modal = this.modal.create(CarritoPage); //Mostramos página del carrito      
+    if(this._us.token){   //Estamos registrados    
       this.router.navigate(['carrito']);
     }else{  //Mostrar el login
-      //this.modal = this.modal.create(LoginPage); //Mostramos Login
       this.router.navigate(['login']);
     }
 
-    // modal.present();
 
-    // modal.onDidDismiss( (abrirCarrito:boolean)=>{ //Una vez hagamos login...
-    //   if(abrirCarrito){//Si se ha registrado correctamente mandamos a la página del carrito
-    //     this.modal.create(CarritoPage);
-    //   }
-    // })
   } 
 
 
@@ -101,5 +87,6 @@ export class CarritoService {
       //Si no existen no pasa nada porque está inicializado vacío
     }  
   }
+
 
 }

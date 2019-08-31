@@ -1,9 +1,26 @@
 <ion-header>
   <ion-toolbar>
+    <ion-button size="small"  routerLink='' slot="start">Atrás</ion-button>
     <ion-title>carrito</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <div text-center *ngIf="_cs.productos.length === 0" class="carrito_vacio">
+    <ion-icon name="cart" class="icon-5x"></ion-icon>
+    <br>
+    Su carrito está vacío
+  </div>
+  <div *ngIf="_cs.productos.length != 0">
+    <ion-grid>
+      <ion-row *ngFor="let producto of _cs.productos">
+        <ion-col>
+          <img src={{producto.codigo | rutaImagen}}>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 
 </ion-content>
