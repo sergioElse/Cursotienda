@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AlertController, Platform, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 //Plugin Storage
 import { Storage } from '@ionic/storage';
 
 //Servicios
 import { UsuarioService } from './usuario.service';
+import { URL_SERVICIOS } from '../../config/url.servicios';
+
+
 
 
 @Injectable({
@@ -22,11 +26,45 @@ export class CarritoService {
                 private storage: Storage, 
                 private _us:UsuarioService,
                 public modal: ModalController,
-                private router: Router) {
+                private router: Router,
+                private http:HttpClient) {
 
     this.cargar_storage();
+    this.actualizar_total();
+  }
 
-   }
+  borrar_producto(indice:number){
+    this.productos.splice(indice, 1);
+    this.guardar_storage();
+  }
+
+  realizar_pedido(){
+    
+    let codigos:string[] = [];  //Un vector donde solo guardaremos los códigos
+    let items:string;
+
+    for( let producto of this.productos){ //Rellenamos el vector con los códigos
+      codigos.push(producto.codigo);
+    }
+    items = codigos.join(",");
+    const data = new HttpParams()
+            .set("items", items);//Separamos los códigos por comas
+    console.log(items);
+
+    let url = `${URL_SERVICIOS}pedidos/realizar_orden/${this._us.token}/${this._us.id_usuario}`; //url
+    
+    return this.http.post(url, data)
+          .subscribe( (resp:any) =>{
+            let respuesta = resp;
+            console.log(respuesta);
+            if(respuesta.error==true){
+              this.alerta("Error en el pedido", respuesta.mensaje);
+            }else{
+              this.productos = []; //Vaciamos el carrito
+              this.alerta("Orden realizada", "Contactaremos con usted proximamente");
+            }
+          })
+  }
 
   ver_carrito(){
 
@@ -35,8 +73,6 @@ export class CarritoService {
     }else{  //Mostrar el login
       this.router.navigate(['login']);
     }
-
-
   } 
 
 
@@ -95,6 +131,14 @@ export class CarritoService {
       }
       //Si no existen no pasa nada porque está inicializado vacío
     }  
+  }
+  async alerta(cabecera:string, sub:string){
+    const alert = await this.alert.create({
+      header: cabecera,
+      subHeader: sub,
+      buttons: ["OK"]
+    });
+    await alert.present();
   }
 
 

@@ -13,14 +13,14 @@
   </div>
   <div *ngIf="_cs.productos.length != 0">
     <ion-grid>
-      <ion-row *ngFor="let producto of _cs.productos">
+      <ion-row *ngFor="let producto of _cs.productos; let i = index">
         <ion-col>
           <img src={{rutaImagen(producto.codigo)}}>
         </ion-col>
         <ion-col>
           <p>{{producto.producto}}</p>
           <p>{{producto.precio_compra | currency:'EUR'}}</p>
-          <ion-button color="danger" fill="outline" size="small">Eliminar</ion-button>
+          <ion-button color="danger" fill="outline" size="small" (click)="_cs.borrar_producto(i)">Eliminar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -32,6 +32,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button expand="block">Realizar pedido</ion-button>
+    <ion-button expand="block" (click)="_cs.realizar_pedido()">Realizar pedido</ion-button>
   </div>
 </ion-content>
