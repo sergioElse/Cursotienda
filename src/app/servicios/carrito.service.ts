@@ -20,6 +20,7 @@ export class CarritoService {
 
   productos:any[] = [];
   total:number = 0;
+  pedidos:any[] = [];
 
   constructor(  public alert: AlertController, 
                 private platform: Platform, 
@@ -141,5 +142,19 @@ export class CarritoService {
     await alert.present();
   }
 
+  cargar_pedidos(){
+    let url = `${URL_SERVICIOS}pedidos/obtener_pedidos/${this._us.token}/${this._us.id_usuario}`;
+    this.http.get(url)
+        .subscribe((resp:any)=>{
+          if (resp.error){
+            this.alerta("Error en el pedido", resp.mensaje);
+          }else{
+            this.pedidos = resp.ordenes;
+          }})
+  }
 
+  borrar_pedidos(pedido_id:string){
+    let url = `${URL_SERVICIOS}pedidos/borrar_pedido/${this._us.token}/${this._us.id_usuario}/${pedido_id}`;
+    return this.http.delete(url);       
+  }
 }

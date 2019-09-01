@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item detail (click)="detalles_pedido(pedido)"  *ngFor="let pedido of _cs.pedidos">
+      <strong>Pedido ID: </strong>
+      {{pedido.id}}
+    </ion-item>
+  </ion-list>
 
 </ion-content>

@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ordenesDetalle</ion-title>
+    <ion-back-button slot="start" defaultHref=""></ion-back-button>
+    <ion-title>Orden {{pedido.id}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-list>
+    <ion-item  *ngFor="let detalle of pedido.detalle">
+      <div padding>
+        <img [src]='rutaImagen(detalle.codigo)'>
+        <h5>{{detalle.producto}}</h5>
+        <p>{{detalle.descripcion}}</p>
+        <p>{{detalle.precio_compra | currency:'EUR'}}</p>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" color="danger" (click)="borrar_pedido(pedido.id)">Borrar Pedido</ion-button>
 </ion-content>
