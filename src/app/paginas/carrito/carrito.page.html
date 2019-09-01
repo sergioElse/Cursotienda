@@ -15,12 +15,23 @@
     <ion-grid>
       <ion-row *ngFor="let producto of _cs.productos">
         <ion-col>
-          <img src={{producto.codigo | rutaImagen}}>
+          <img src={{rutaImagen(producto.codigo)}}>
         </ion-col>
         <ion-col>
+          <p>{{producto.producto}}</p>
+          <p>{{producto.precio_compra | currency:'EUR'}}</p>
+          <ion-button color="danger" fill="outline" size="small">Eliminar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <hr>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3><strong>Total:</strong> {{_cs.total | currency:'EUR'}} </h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-button expand="block">Realizar pedido</ion-button>
   </div>
-
 </ion-content>

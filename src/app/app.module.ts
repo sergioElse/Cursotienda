@@ -20,13 +20,11 @@ import { CarritoService } from './servicios/carrito.service';
 
 //Pipes
 import { PipesModule } from './pipes/pipes.module';
-import { RutaImagenPipe } from './pipes/ruta-imagen.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent, 
-    RutaImagenPipe
   ],
   entryComponents: [],
   imports: [
@@ -35,7 +33,7 @@ import { RutaImagenPipe } from './pipes/ruta-imagen.pipe';
     IonicStorageModule.forRoot(), 
     HttpClientModule,
     AppRoutingModule,
-    //PipesModule
+    PipesModule
   ],
   providers: [
     StatusBar,

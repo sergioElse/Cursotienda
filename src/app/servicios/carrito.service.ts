@@ -15,6 +15,7 @@ import { UsuarioService } from './usuario.service';
 export class CarritoService {
 
   productos:any[] = [];
+  total:number = 0;
 
   constructor(  public alert: AlertController, 
                 private platform: Platform, 
@@ -50,7 +51,15 @@ export class CarritoService {
       }
     }
     this.productos.push(producto);//Vamos insertando al carrito
+    this.actualizar_total();
     this.guardar_storage();
+  }
+
+  actualizar_total(){
+    this.total = 0;
+    for(let producto of this.productos){
+      this.total += Number(producto.precio_compra);
+    }
   }
 
   async presentAlert(producto){
