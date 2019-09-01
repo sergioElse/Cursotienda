@@ -36,6 +36,16 @@ const routes: Routes =[
               import('../ordenes/ordenes.module').then(m => m.OrdenesPageModule)
           }
         ]
+      }, 
+      {
+        path: 'tab-busqueda',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../busqueda/busqueda.module').then(m => m.BusquedaPageModule)
+          }
+        ]
       },
       {
         path: '',

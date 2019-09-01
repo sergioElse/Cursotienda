@@ -13,6 +13,7 @@ export class ProductosService {
   productos:any[] = []; //queda del tipo productos[[item1, item2],[item3, item4]......]
   lineas:any[] = [];
   por_categoria:any[] = []; //Arreglo para objetos filtrados por categoría
+  resultados:any[]= []; //Arreglo para guardar las busquedas
 
   constructor(private http: HttpClient) { 
       this.cargar_todos();
@@ -76,6 +77,15 @@ export class ProductosService {
       }
       console.log(nuevoArreglo);
       return nuevoArreglo;
+  }
+
+
+  buscar_producto(termino:string){
+    let url = URL_SERVICIOS + "productos/buscar" + termino;
+    this.http.get(url)
+        .subscribe((resp:any)=>{
+          this.resultados = resp;
+        })
   }
 
 }
