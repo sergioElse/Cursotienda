@@ -31,8 +31,9 @@ export class OrdenesDetallePage implements OnInit {
   borrar_pedido(id_pedido){
     this._cs.borrar_pedidos(id_pedido)
               .subscribe( (data:any)=>{
+                console.log(data);
                 if(data.error){
-                  //Manejamos el error
+                  console.log('entramos en el error');
                 }else{
                   this.router.navigate(['tabs/tab-pedidos']);
                 }

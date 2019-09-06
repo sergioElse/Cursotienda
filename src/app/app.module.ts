@@ -22,11 +22,16 @@ import { CarritoService } from './servicios/carrito.service';
 import { PipesModule } from './pipes/pipes.module';
 
 
+//Components
+
+
+
 @NgModule({
   declarations: [
     AppComponent, 
   ],
-  entryComponents: [],
+  entryComponents: [
+  ],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(),

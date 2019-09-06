@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { UsuarioService } from './usuario.service';
 import { URL_SERVICIOS } from '../../config/url.servicios';
 
+//Modals
 
 
 
@@ -67,7 +68,19 @@ export class CarritoService {
           })
   }
 
-  ver_carrito(){
+  async ver_carrito(){
+    
+  //   let modal:any;
+  //   if(this._us.token){
+  //     modal= await this.modal.create({
+  //       component: CarritoPage
+  //     })
+  //   }else{
+  //     modal= await this.modal.create({
+  //       component: LoginPage
+  //   })
+  // }
+  // return await modal.present();
 
     if(this._us.token){   //Estamos registrados    
       this.router.navigate(['carrito']);

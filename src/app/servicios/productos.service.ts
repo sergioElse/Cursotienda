@@ -25,6 +25,8 @@ export class ProductosService {
     let url = URL_SERVICIOS + "lineas";
     this.http.get(url)
       .subscribe((data:any) => {
+        console.log('Esto es el data: ',data);
+        console.log('Esto es el data.error:', data.error);
         if(data.error){
           //Error
         }else{
@@ -81,10 +83,10 @@ export class ProductosService {
 
 
   buscar_producto(termino:string){
-    let url = URL_SERVICIOS + "productos/buscar" + termino;
+    let url = URL_SERVICIOS + "productos/buscar/" + termino;
     this.http.get(url)
         .subscribe((resp:any)=>{
-          this.resultados = resp;
+          this.resultados = resp.productos;
         })
   }
 
